@@ -1,3 +1,5 @@
+/** @format */
+
 var mysql = require("mysql2");
 
 var misConn = mysql.createConnection({
@@ -49,7 +51,7 @@ const initializeConnections = () => {
   mchConn.connect();
   slsConn.connect();
   mtrlConn.connect();
-}
+};
 
 let misQuery = async (q, callback) => {
   misConn.query(q, (err, res, fields) => {
@@ -72,7 +74,7 @@ let misQueryPromise = (q) => {
       else resolve(res);
     });
   });
-}
+};
 
 let mtrlQueryMod = async (m, callback) => {
   mtrlConn.query(m, (err, res, fields) => {
@@ -110,7 +112,7 @@ let qtnQueryMod = (q, callback) => {
       callback(err, null);
       return;
     }
-    if(res.length == 0){
+    if (res.length == 0) {
       console.log(q);
     }
     callback(null, res);
@@ -136,7 +138,7 @@ let qtnQueryPromise = (q, values = []) => {
   });
 };
 
-let slsQueryMod = (s, callback) => {  
+let slsQueryMod = (s, callback) => {
   slsConn.query(s, (err, res, fields) => {
     if (err) callback(err, null);
     else callback(null, res);
